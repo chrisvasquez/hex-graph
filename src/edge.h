@@ -17,6 +17,17 @@ public:
        double value = Constants::inf)
     : from(from), to(to), identifier(identifier), value(value) {}
 
+  //  Getters and Setters
+  Vertex get_from() const;
+  void set_from(const Vertex& from);
+  Vertex get_to() const;
+  void set_to(const Vertex& to);
+  std::string get_identifier() const;
+  void set_identifier(std::string identifier);
+  double get_value() const;
+  void set_value(double value);
+
+  //  Overloaded relational operators
   bool operator ==(const Edge& edge) const;
   bool operator <(const Edge& edge) const;
 

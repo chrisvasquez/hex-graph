@@ -11,16 +11,19 @@
 class Graph
 {
 public:
-  Graph();
+  Graph(bool is_undirected = true, bool has_unique_edges = true);
   //  Method : returns the number of vertices in the graph
   int GetNumberOfVertices() const ;
 
-  void AddVertex(const Vertex vertex, double value = Constants::inf);
+  void AddVertex(const Vertex& vertex, double value = Constants::inf);
   // void DeleteVertex(const Vertex& vertex);
   void SetVertexValue(const Vertex& vertex, double value);
   double GetVertexValue(const Vertex& vertex) const;
 
   void AddEdge(const Edge& edge);
+  void AddEdge(const Vertex& from,
+               const Vertex& to,
+               double value = Constants::inf) throw(std::logic_error);
   // void DeleteEdge(const Edge& edge);
   void SetEdgeValue(const Edge& edge);
   double GetEdgeValue(const Edge& edge) const;
@@ -38,6 +41,11 @@ public:
   std::vector<Edge>::const_iterator edge_end() const;
 
 private:
+  //  Flag : true for undirected edges
+  bool is_undirected;
+  //  Flag : true if two vertices are connected only by 1 edge
+  bool has_unique_edges;
+
   //  Vectors of all vertices indexed by an int that can be found using the
   //  vertex_symbols_table
   std::vector<Vertex> vertices;

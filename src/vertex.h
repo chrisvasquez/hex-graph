@@ -26,7 +26,7 @@ public:
   //  Overloaded === and < operators
   bool operator ==(const Vertex& vertex) const;
   bool operator <(const Vertex& vertex) const;
-  //  Overloaded std::hash and << operator
+  //  Overloaded and << operator
   friend std::ostream& operator<<(std::ostream& out, const Vertex& vertex);
 private:
   //  String identifier for the vertex, maybe the name of the vertex

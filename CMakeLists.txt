@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(hexsimple)
+project(hex)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 # enable c++11 support

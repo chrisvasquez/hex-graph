@@ -4,19 +4,6 @@
 #include "vertex.h"
 #include "constants.h"
 
-//  Forward declaration of the class for use in the definition of the
-//  overloaded std::hash and the << operator
-class Edge;
-
-//  Declaration of the overloaded std::hash and << operator
-namespace std {
-  template <>
-  struct hash<Edge> {
-    size_t operator ()(const Edge& edge) const;
-  };
-  ostream& operator <<(ostream& out, const Edge& edge);
-}
-
 //
 //  Class Edge:
 //
@@ -33,8 +20,7 @@ public:
   bool operator ==(const Edge& edge) const;
   bool operator <(const Edge& edge) const;
 
-  //  Overloaded std::hash and << operator
-  friend std::size_t std::hash<Edge>::operator()(const Edge& edge) const;
+  //  Overloaded << operator
   friend std::ostream& operator<<(std::ostream& out, const Edge& edge);
 
 private:
@@ -43,4 +29,10 @@ private:
   double value;
 };
 
+// Custom class for use as the custom hash function for the Edge class
+// for use in unordered_map and unordered_set
+class EdgeHash {
+public:
+    std::size_t operator()(const Edge& edge) const;
+};
 #endif // EDGE_H

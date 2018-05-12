@@ -27,7 +27,7 @@ class Vertex
 public:
   //  Constructor with default parameter values
   //  Acts as the default constructor
-  Vertex(std::string identifier = "", double value = 0): identifier(identifier), value(value) {};
+  Vertex(std::string identifier = "", double value = 0): identifier(identifier), value(value) {}
   //  Copy constructor
   Vertex(const Vertex& vertex);
   //  Setter and getter for identifier

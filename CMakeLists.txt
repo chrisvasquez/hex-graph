@@ -4,9 +4,9 @@ project(hexsimple)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 # enable c++11 support
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++11 -Wall")
 if(CMAKE_COMPILER_IS_GNUCXX)
-    add_definitions(-std=c++11)
+    add_definitions(--std=c++11)
 endif()
 
 include_directories(include)

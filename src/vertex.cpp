@@ -30,11 +30,13 @@ bool Vertex::operator ==(const Vertex& vertex) const {
 bool Vertex::operator <(const Vertex& vertex) const {
   return identifier < vertex.identifier;
 }
-//  Template specialization for the type Vertex of std::hash::operator()
-//  For use in unordered_map or unordered_set
-std::size_t std::hash<Vertex>::operator ()(const Vertex& vertex) const {
-  return 0;
+
+// Custom class for use as the custom hash function for the Vertex class
+// for use in unordered_map and unordered_set
+std::size_t VertexHash::operator ()(const Vertex& vertex) const {
+  return ((std::hash<std::string>()(vertex.get_identifier())) << 1 );
 }
+
 //  Overload definition for <<
 std::ostream& operator <<(std::ostream& out, const Vertex& vertex) {
   out << "<Vertex(" << vertex.get_identifier() << ":" << vertex.get_value() << ">";

@@ -17,7 +17,7 @@ private:
     double shortest_path_cost;
 
     //  Private convenience variable to store the vertex prior to the current vertex where the shortest path is
-    std::unordered_map<Vertex, Vertex> prev;
+    std::unordered_map<Vertex, Vertex, VertexHash> prev;
 
     //  Delegate methods
     //  std::function<void(int, double)> priority_change_handler;

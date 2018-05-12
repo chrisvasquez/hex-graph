@@ -4,19 +4,6 @@
 #include <iostream>
 #include <string>
 
-//  Forward declaration of the class for use in the definition of the overloaded
-//  std::hash and the << operator
-class Vertex;
-
-//  Declaration of the overloaded std::hash and << operator
-namespace std {
-  template <>
-  struct hash<Vertex> {
-    size_t operator ()(const Vertex& vertex) const;
-  };
-  ostream& operator <<(ostream& out, const Vertex& vertex);
-}
-
 //
 //  Class Vertex
 //    *  Designed to be sub-classed to make a more appropriate class name for the application
@@ -40,7 +27,6 @@ public:
   bool operator ==(const Vertex& vertex) const;
   bool operator <(const Vertex& vertex) const;
   //  Overloaded std::hash and << operator
-  friend std::size_t std::hash<Vertex>::operator()(const Vertex& vertex) const;
   friend std::ostream& operator<<(std::ostream& out, const Vertex& vertex);
 private:
   //  String identifier for the vertex, maybe the name of the vertex
@@ -49,6 +35,13 @@ private:
   std::string identifier;
   //  Value of the vertex that can be used in computation in a graph algorithm
   double value;
+};
+
+// Custom class for use as the custom hash function for the Vertex class
+// for use in unordered_map and unordered_set
+class VertexHash {
+public:
+    std::size_t operator()(const Vertex& vertex) const;
 };
 
 #endif // VERTEX_H
